@@ -3,7 +3,7 @@
 
 Please refer to the following article for more information and/or cite when using the JAnaP for published works : Gray, K.M., Katz, D.B., Brown, E.G. et al. Ann Biomed Eng (2019). https://doi.org/10.1007/s10439-019-02266-5
 
-Please also complete this short form prior to download: https://forms.gle/m7sGwd69sEhiGRJc9 so we can track who is using the program and to what research applications it is being applied. 
+Please also complete this short form prior to download: https://forms.gle/m7sGwd69sEhiGRJc9 so we can track who is using the program and for what research applications it is being used. 
 
 
 ## Setup
