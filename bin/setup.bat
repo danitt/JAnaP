@@ -27,10 +27,11 @@ C:\Python27\Scripts\pip.exe install flask
 C:\Python27\Scripts\pip.exe install joblib
 C:\Python27\Scripts\pip.exe install jupyter
 
-if not exist %~dp0\packages\ij150-win-java8.zip (
-    bitsadmin.exe /transfer "Download ImageJ" https://s3.amazonaws.com/umd-cells/packages/ij150-win-java8.zip %~dp0\packages\ij150-win-java8.zip
-)
+REM 
+REM if not exist %~dp0\packages\ij150-win-java8.zip (
+REM     bitsadmin.exe /transfer "Download ImageJ" https://s3.amazonaws.com/umd-cells/packages/ij150-win-java8.zip %~dp0\packages\ij150-win-java8.zip
+REM )
 
-if not exist %~dp0\packages\ImageJ (
-    powershell.exe -nologo -noprofile -command "& { Add-Type -A 'System.IO.Compression.FileSystem'; [IO.Compression.ZipFile]::ExtractToDirectory('%~dp0\packages\ij150-win-java8.zip', '%~dp0\packages\'); }"
-)
+REM if not exist %~dp0\packages\ImageJ (
+REM     powershell.exe -nologo -noprofile -command "& { Add-Type -A 'System.IO.Compression.FileSystem'; [IO.Compression.ZipFile]::ExtractToDirectory('%~dp0\packages\ij150-win-java8.zip', '%~dp0\packages\'); }"
+REM )
