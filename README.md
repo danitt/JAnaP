@@ -5,6 +5,12 @@ Please refer to the following article for more information and/or cite when usin
 
 Please also complete this short form prior to download: https://forms.gle/m7sGwd69sEhiGRJc9 so we can track who is using the program and for what research applications it is being used. 
 
+All neccessary insructions to install and use the program can be found in the JAnaP User Guide provided.
+
+
+
+
+
 
 ## Setup
 
