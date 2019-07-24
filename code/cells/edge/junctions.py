@@ -127,11 +127,28 @@ def get_subfeature_edge_data(feature_mask, perimeter, window_size):
 
     w, h = feature_mask.shape
 
-    if w == 1024:
-            continuous_min_path_length = continuous_min_path_length_px
-    elif w == 2048:
-            continuous_min_path_length = continuous_min_path_length_px*2
+    # This code currently assumes the images are square, future work can be 
+    # done to allow non-square images. 
+    # 
+    # If all of the images in a project are the same size, we don't need
+    # to scale the `continuous_min_path_length` because the value should
+    # (or could) be set for that project. 
+    # 
+    # The dimensions of the image the configuration value for 
+    # `continuous_min_path_length_px` is based on should also be a setting
+    # in the configuration. Currently it is always assumed this is 1024px.
     
+    # TODO: Generalize and move to configuration file. This value should
+    # not be hardcoded. Change from size to shape and make w, h tuple.
+    #   i.e. config_base_image_shape = (1024, 1024)
+    config_base_image_size = 1024
+    
+    if w == config_base_image_size:
+        continuous_min_path_length = continuous_min_path_length_px
+    else: 
+        scale_factor = float(w) / float(config_base_image_size)
+        continuous_min_path_length = int(continuous_min_path_length_px * scale_factor)
+
     binary_full = scipy.ndimage.generate_binary_structure(2, 2)
 
     path = numpy.asarray(perimeter)
