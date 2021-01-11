@@ -196,6 +196,6 @@ class CellShapes():
         #     matplotlib.pyplot.plot(r, c, 'o')
         # matplotlib.pyplot.show()
 
-        x0, y0, width, height, phi = success.params
+        x0, y0, width, height, phi = ellipse_hull.params
         
         return phi
