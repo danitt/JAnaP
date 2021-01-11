@@ -130,5 +130,8 @@ class Shapes(BaseJob):
 
         shape_data["hull_aspect_ratio_ab"], shape_data["hull_aspect_ratio"] = \
             shape_calculator.get_hull_aspect_ratios()
+            
+        #adding angle
+        shape_data["angle"] = shape_calculator.get_angle()
 
         return shape_data

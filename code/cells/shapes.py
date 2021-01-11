@@ -165,3 +165,37 @@ class CellShapes():
         ls = min([float(a), float(b)]) / max([float(a), float(b)])
 
         return ab, ls
+    
+    def get_angle(self):
+        sorted_hull_points = self.get_convex_hull()
+        hull_point_array = numpy.asarray(sorted_hull_points)
+
+        ellipse_hull = skimage.measure.EllipseModel()
+        success = ellipse_hull.estimate(hull_point_array)
+        
+        if not success:
+            add_points = 10
+
+            while not success and add_points < 100:
+                add_points_skip = int(math.floor(len(self.path) / add_points))
+
+                path = numpy.asarray(self.path)
+                add_points_arr = path[::add_points_skip]
+
+                new_arr = numpy.append(hull_point_array, add_points_arr, 0)
+
+                ellipse_hull = skimage.measure.EllipseModel()
+                success = ellipse_hull.estimate(new_arr)
+                
+                add_points += 10
+        
+        # import matplotlib.pyplot
+        # 
+        # for hp in new_arr:
+        #     r, c = hp
+        #     matplotlib.pyplot.plot(r, c, 'o')
+        # matplotlib.pyplot.show()
+
+        x0, y0, width, height, phi = success.params
+        
+        return phi
