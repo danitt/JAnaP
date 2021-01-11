@@ -47,3 +47,7 @@ $ pip install -r bin/requirements.txt
 ```
 $ jupyter nbextension enable --py widgetsnbextension
 ```
+
+### Checking for Errors
+
+In order to check for errors after running jobs, navigate to your main repository, then go to: data / projects / 'your project name' / system / job errors
