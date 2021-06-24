@@ -165,3 +165,59 @@ class CellShapes():
         ls = min([float(a), float(b)]) / max([float(a), float(b)])
 
         return ab, ls
+    
+    def get_angle(self):
+        sorted_hull_points = self.get_convex_hull()
+        hull_point_array = numpy.asarray(sorted_hull_points)
+
+        ellipse_hull = skimage.measure.EllipseModel()
+        success = ellipse_hull.estimate(hull_point_array)
+        
+        if not success:
+            add_points = 10
+
+            while not success and add_points < 100:
+                add_points_skip = int(math.floor(len(self.path) / add_points))
+
+                path = numpy.asarray(self.path)
+                add_points_arr = path[::add_points_skip]
+
+                new_arr = numpy.append(hull_point_array, add_points_arr, 0)
+                hull_point_array = new_arr.copy()
+                
+
+                ellipse_hull = skimage.measure.EllipseModel()
+                success = ellipse_hull.estimate(hull_point_array)
+                
+                add_points += 10
+        
+        xc, yc, a, b, phi = ellipse_hull.params
+        # need to calculate the slope of the line relative to the image, not the x,y axis.
+        a_p1 = xc + a*math.cos(phi), yc + a*math.sin(phi)
+        a_p2 = xc - a*math.cos(phi), yc - a*math.sin(phi)
+        b_p1 = xc - b*math.sin(phi), yc + b*math.cos(phi)
+        b_p2 = xc + b*math.sin(phi), yc - b*math.cos(phi)
+
+        # we need to invert only the apparent y-axis 
+        x_max, y_max = self.image.shape
+        m = ((y_max - a_p1[0]) - (y_max - a_p2[0])) / (a_p1[1] - a_p2[1])
+        image_angle = math.atan(m)
+        image_angle_deg = math.degrees(image_angle)
+        if image_angle_deg < 0:
+            image_angle_deg += 180
+
+        #import matplotlib.pyplot
+         
+        #matplotlib.pyplot.figure(15)
+        #matplotlib.pyplot.imshow(self.image)
+        #for hp in hull_point_array:
+        #   r, c = hp
+        #   matplotlib.pyplot.plot(r, c, 'o')
+        #   matplotlib.pyplot.scatter([c], [r], color='#AA3C39', marker=',')
+
+        #matplotlib.pyplot.plot([a_p1[1], a_p2[1]], [a_p1[0], a_p2[0]], 'y') #Change y to change color 
+        #matplotlib.pyplot.plot([b_p1[1], b_p2[1]], [b_p1[0], b_p2[0]], 'c') #Change c to change color 
+        #matplotlib.pyplot.savefig('/Users/adamlanda/Documents/JAnaP/data/testfig.png')
+        #matplotlib.pyplot.close()
+
+        return image_angle_deg

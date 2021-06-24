@@ -2,6 +2,10 @@ import os
 import inspect
 import sys
 
+# TODO: Determine why this change was made
+import matplotlib
+matplotlib.use('TkAgg')
+
 import werkzeug.serving
 import thread
 

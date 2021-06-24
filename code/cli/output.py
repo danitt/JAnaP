@@ -91,6 +91,7 @@ def generate_cell_data_file(project):
     #                   "Hull Aspect Ratio (< 1)"])
 
     output_row.extend(["Hull Aspect Ratio (< 1)"])
+    output_row.extend(["Angle of Major Axis wrt X-Axis (degrees)"])
 
 
 
@@ -167,7 +168,8 @@ def generate_cell_data_file(project):
             output_row.extend([shape_data.get("solidity", ""),
                                shape_data.get("circularity", ""),
                                shape_data.get("convex_area", ""),
-                               shape_data.get("hull_aspect_ratio", "")])
+                               shape_data.get("hull_aspect_ratio", ""), 
+                               shape_data.get("angle", "")])
                                #shape_data.get("aspect_ratio", "")])
         else:
             # Perimeter
