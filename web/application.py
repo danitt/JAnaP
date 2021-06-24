@@ -1,7 +1,8 @@
 import os
 import inspect
 import sys
-
+import matplotlib
+matplotlib.use('TkAgg')
 import werkzeug.serving
 import thread
 

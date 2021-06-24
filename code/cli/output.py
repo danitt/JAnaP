@@ -91,7 +91,7 @@ def generate_cell_data_file(project):
     #                   "Hull Aspect Ratio (< 1)"])
 
     output_row.extend(["Hull Aspect Ratio (< 1)"])
-    output_row.extend(["Angle of Major Axis wrt X-Axis"])
+    output_row.extend(["Angle of Major Axis wrt X-Axis (degrees)"])
 
 
 
