@@ -39,6 +39,5 @@ if __name__ == "__main__":
     if not werkzeug.serving.is_running_from_reloader():
         thread.start_new_thread(controllers.worker.background_thread, ())
 
-    controllers.app.secret_key = "AF8RN4L6SKeRDNTw"
+    controllers.app.secret_key = os.urandom(12).hex()
     controllers.app.run(debug=True, host=APP_HOST)
-    controllers.app.run(debug=True)
