@@ -2,7 +2,9 @@
 docs/.ipynb_checkpoints/*
 .ipynb_checkpoints/
 
+# IDE
 .idea/
+.vscode
 
 
 !example.conf
@@ -16,6 +18,5 @@ venv/
 
 web/controllers/static/tmp/
 
+# Config
 node.conf.local
-
-# *.conf

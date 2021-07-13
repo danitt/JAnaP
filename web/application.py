@@ -29,6 +29,9 @@ controllers.configuration.parse_config_file(config_file)
 code_dir = controllers.configuration.NodeConfiguration.Paths.code_root
 sys.path.insert(0, code_dir) 
 
+# Optionally override host path
+APP_HOST = os.getenv('APP_HOST', '127.0.0.1')
+
 import controllers.worker
 
 if __name__ == "__main__":
@@ -37,4 +40,5 @@ if __name__ == "__main__":
         thread.start_new_thread(controllers.worker.background_thread, ())
 
     controllers.app.secret_key = "AF8RN4L6SKeRDNTw"
+    controllers.app.run(debug=True, host=APP_HOST)
     controllers.app.run(debug=True)
