@@ -11,17 +11,27 @@ All necessary instructions to install and use the program can be found in the JA
 ## Quick Start
 The easiest way to run the application on any operating system is via [Docker](https://www.docker.com).
 
+
 1. Install Docker
+    - https://www.docker.com/products/docker-desktop
 
-  - https://www.docker.com/products/docker-desktop
+2. Run the following commands from your terminal
 
-2. Run the following command from your terminal
+    - 2.1. Folder Creation (initial setup only)
 
-  - `docker run -d -p 5000:5000 danitt/janap`
+        - `mkdir projects`
+
+        - **Note**: this is where the data will be stored for the JAnaP projects you set up (see User Manual)
+
+    - 2.2. Starting Application
+
+        - Linux/Mac: ```docker run --rm -p 5000:5000 -v `pwd`/projects:/app/JAnaP/data/projects danitt/janap```
+
+        - Windows: ```docker run --rm -p 5000:5000 -v `pwd`\projects:/app/JAnaP/data/projects danitt/janap```
 
 3. Open your browser to this page:
 
-  - `http://localhost:5000`
+    - `http://localhost:5000`
 
 **Note:** you do _not_ have to download this repository at all, simply follow the above steps
 
