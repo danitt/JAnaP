@@ -5,10 +5,25 @@ Please refer to the following article for more information and/or cite when usin
 
 Please also complete this short form prior to download: https://forms.gle/m7sGwd69sEhiGRJc9 so we can track who is using the program and for what research applications it is being used. 
 
-All neccessary insructions to install and use the program can be found in the JAnaP User Guide provided.
+All necessary instructions to install and use the program can be found in the JAnaP User Guide provided.
 
 
+## Quick Start
+The easiest way to run the application on any operating system is via [Docker](https://www.docker.com).
 
+1. Install Docker
+
+  - https://www.docker.com/products/docker-desktop
+
+2. Run the following command from your terminal
+
+  - `docker run -d -p 5000:5000 danitt/janap`
+
+3. Open your browser to this page:
+
+  - `http://localhost:5000`
+
+**Note:** you do _not_ have to download this repository at all, simply follow the above steps
 
 
 
