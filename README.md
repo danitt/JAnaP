@@ -27,7 +27,7 @@ The easiest way to run the application on any operating system is via [Docker](h
 
         - Linux/Mac: ```docker run --rm -p 5000:5000 -v `pwd`/projects:/app/JAnaP/data/projects danitt/janap```
 
-        - Windows: ```docker run --rm -p 5000:5000 -v `pwd`\projects:/app/JAnaP/data/projects danitt/janap```
+        - Windows: ```docker run --rm -p 5000:5000 -v projects:/app/JAnaP/data/projects danitt/janap```
 
 3. Open your browser to this page:
 
